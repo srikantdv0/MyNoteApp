@@ -833,6 +833,7 @@
 /Users/srikantyadav/Projects/Notes/Notes/NotesBlaze/obj/Debug/net6.0/staticwebassets.pack.json
 /Users/srikantyadav/Projects/Notes/Notes/NotesBlaze/obj/Debug/net6.0/staticwebassets.build.json
 /Users/srikantyadav/Projects/Notes/Notes/NotesBlaze/obj/Debug/net6.0/staticwebassets.development.json
+/Users/srikantyadav/Projects/Notes/Notes/NotesBlaze/obj/Debug/net6.0/scopedcss/Pages/Index.razor.rz.scp.css
 /Users/srikantyadav/Projects/Notes/Notes/NotesBlaze/obj/Debug/net6.0/scopedcss/Shared/MainLayout.razor.rz.scp.css
 /Users/srikantyadav/Projects/Notes/Notes/NotesBlaze/obj/Debug/net6.0/scopedcss/Shared/NavMenu.razor.rz.scp.css
 /Users/srikantyadav/Projects/Notes/Notes/NotesBlaze/obj/Debug/net6.0/scopedcss/bundle/NotesBlaze.styles.css
@@ -842,4 +843,3 @@
 /Users/srikantyadav/Projects/Notes/Notes/NotesBlaze/obj/Debug/net6.0/refint/NotesBlaze.dll
 /Users/srikantyadav/Projects/Notes/Notes/NotesBlaze/obj/Debug/net6.0/NotesBlaze.pdb
 /Users/srikantyadav/Projects/Notes/Notes/NotesBlaze/obj/Debug/net6.0/ref/NotesBlaze.dll
-/Users/srikantyadav/Projects/Notes/Notes/NotesBlaze/obj/Debug/net6.0/scopedcss/Pages/Index.razor.rz.scp.css
