@@ -37,6 +37,7 @@
     <None Remove="Services\" />
     <None Remove="Profiles\" />
     <None Remove="Logging\" />
+    <None Remove="Notes.db" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Controllers\" />
@@ -53,5 +54,8 @@
     <ProjectReference Include="..\NotesShared\NotesShared.csproj">
       <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Notes.db" />
   </ItemGroup>
 </Project>
