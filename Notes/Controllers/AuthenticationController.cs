@@ -54,8 +54,8 @@ namespace Notes.Controllers
                 _configuration["Authentication:Audience"],
                 claimsForToken,
                 DateTime.UtcNow,
-                //DateTime.UtcNow.AddHours(1),
-                DateTime.UtcNow.AddSeconds(60),
+                DateTime.UtcNow.AddHours(1),
+                //DateTime.UtcNow.AddSeconds(60),
                 signingCredentials);
 
             var tokenToReturn = new JwtSecurityTokenHandler()
