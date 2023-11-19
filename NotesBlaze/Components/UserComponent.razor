@@ -1,0 +1,73 @@
+﻿@using Microsoft.JSInterop;
+@using NotesShared.Models;
+@inject IJSRuntime _jsr;
+@inject StateContainer stateContainer;
+@inject NavigationManager navigationManager;
+@implements IDisposable;
+<p>
+    @if (!string.IsNullOrEmpty(username))
+    {
+        <span><AutoComplete noteMetadata="@noteMetadata" /> Hello, @username <a href="/logout">(Logout)</a></span>
+        
+    }
+    else
+    {
+        <span><a href="/register">Register</a> <a href="/login">Login</a></span>
+    }
+
+</p>
+
+@code {
+
+    string username = string.Empty;
+
+    private List<NoteMetadata>? noteMetadata;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await base.OnInitializedAsync();
+
+        stateContainer.metaDataEvent += OnNoteMetaDataEventHandler;
+        stateContainer.userLoginEvent += OnUserLoginEventHandler;
+        stateContainer.userLogoutEvent += OnUserLogoutEventHandler;
+    }
+
+    private void OnNoteMetaDataEventHandler(object? sender, IEnumerable<NoteMetadata>? noteMetadata)
+    {
+        if (noteMetadata != null)
+        {
+            this.noteMetadata = noteMetadata.ToList();
+
+        }
+        else
+        {
+            this.noteMetadata = null;
+        }
+        StateHasChanged();
+    }
+
+    private async void OnUserLoginEventHandler(object? sender, EventArgs eventArgs)
+    {
+        var userdata = await _jsr.InvokeAsync<string>("localStorage.getItem", "user").ConfigureAwait(false);
+        if (!string.IsNullOrWhiteSpace(userdata))
+        {
+            username = userdata.Split(';', 2)[0];
+        }
+        StateHasChanged();
+    }
+
+    private async void OnUserLogoutEventHandler(object? sender, EventArgs eventArgs)
+    {
+        username = String.Empty;
+        await stateContainer.GetNoteMetaData();
+        await stateContainer.GetSharedNoteMetaData();
+        StateHasChanged();
+    }
+
+    public void Dispose()
+    {
+        stateContainer.metaDataEvent -= OnNoteMetaDataEventHandler;
+        stateContainer.userLoginEvent -= OnUserLoginEventHandler;
+        stateContainer.userLogoutEvent -= OnUserLogoutEventHandler;
+    }
+    }

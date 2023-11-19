@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "VyLuhYPu4WCMIOpP8foPZyc0B8QEM6ZlGj31GJOkhLpodHg9ZHw3esbrnkgSUSlh7vNHhsUX7KjXiSYCETZd0w==",
+  "success": true,
+  "projectFilePath": "/Users/srikantyadav/Projects/Notes/Notes/NotesShared/NotesShared.csproj",
+  "expectedPackageFiles": [
+    "/Users/srikantyadav/.nuget/packages/microsoft.aspnetcore.app.ref/6.0.14/microsoft.aspnetcore.app.ref.6.0.14.nupkg.sha512",
+    "/Users/srikantyadav/.nuget/packages/microsoft.netcore.app.ref/6.0.14/microsoft.netcore.app.ref.6.0.14.nupkg.sha512"
+  ],
+  "logs": []
+}

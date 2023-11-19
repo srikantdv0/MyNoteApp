@@ -1,0 +1,27 @@
+﻿@page "/note/new";
+@using Microsoft.AspNetCore.Authorization;
+
+
+@using NotesBlaze.Components;
+
+
+<style>
+    .full-width {
+        width: 100%;
+        height: 80vh;
+    }
+</style>
+
+@if (notesForCreationDto == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <EditForm Model="@notesForCreationDto" OnSubmit="@Submit" Context="formContext">
+        <textarea @bind="@notesForCreationDto.Title" />
+        <textarea @bind="@notesForCreationDto.Content" class="full-width" />
+        <button class="btn btn-primary" type="Submit">Save</button>
+    </EditForm>
+}
+

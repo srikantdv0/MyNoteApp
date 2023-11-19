@@ -1,0 +1,89 @@
+is_global = true
+build_property.TargetFramework = net6.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = 
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = false
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = browser
+build_property.RootNamespace = NotesBlaze
+build_property.RootNamespace = NotesBlaze
+build_property.ProjectDir = /Users/srikantyadav/Projects/Notes/Notes/NotesBlaze/
+build_property.RazorLangVersion = 6.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = /Users/srikantyadav/Projects/Notes/Notes/NotesBlaze
+build_property._RazorSourceGeneratorDebug = 
+
+[/Users/srikantyadav/Projects/Notes/Notes/NotesBlaze/App.razor]
+build_metadata.AdditionalFiles.TargetPath = QXBwLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/srikantyadav/Projects/Notes/Notes/NotesBlaze/Components/AutoComplete.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9BdXRvQ29tcGxldGUucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/srikantyadav/Projects/Notes/Notes/NotesBlaze/Components/ForgetPassword.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9Gb3JnZXRQYXNzd29yZC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/srikantyadav/Projects/Notes/Notes/NotesBlaze/Components/Login.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9Mb2dpbi5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/srikantyadav/Projects/Notes/Notes/NotesBlaze/Components/Logout.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9Mb2dvdXQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/srikantyadav/Projects/Notes/Notes/NotesBlaze/Components/NewNote.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9OZXdOb3RlLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/srikantyadav/Projects/Notes/Notes/NotesBlaze/Components/NoteContent.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9Ob3RlQ29udGVudC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/srikantyadav/Projects/Notes/Notes/NotesBlaze/Components/NotesList.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9Ob3Rlc0xpc3QucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/srikantyadav/Projects/Notes/Notes/NotesBlaze/Components/Register.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9SZWdpc3Rlci5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/srikantyadav/Projects/Notes/Notes/NotesBlaze/Components/ResetPassword.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9SZXNldFBhc3N3b3JkLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/srikantyadav/Projects/Notes/Notes/NotesBlaze/Components/ShareWith.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9TaGFyZVdpdGgucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/srikantyadav/Projects/Notes/Notes/NotesBlaze/Components/Toast.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9Ub2FzdC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/srikantyadav/Projects/Notes/Notes/NotesBlaze/Components/UserComponent.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9Vc2VyQ29tcG9uZW50LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/srikantyadav/Projects/Notes/Notes/NotesBlaze/Shared/SurveyPrompt.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkL1N1cnZleVByb21wdC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/srikantyadav/Projects/Notes/Notes/NotesBlaze/_Imports.razor]
+build_metadata.AdditionalFiles.TargetPath = X0ltcG9ydHMucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/srikantyadav/Projects/Notes/Notes/NotesBlaze/Pages/Index.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvSW5kZXgucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-m03smk3bnw
+
+[/Users/srikantyadav/Projects/Notes/Notes/NotesBlaze/Shared/MainLayout.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkL01haW5MYXlvdXQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-z8tavkiyql
+
+[/Users/srikantyadav/Projects/Notes/Notes/NotesBlaze/Shared/NavMenu.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkL05hdk1lbnUucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-pcuvlfldr4

@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="../build/NotesBlaze.props" />
+</Project>

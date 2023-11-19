@@ -1,0 +1,71 @@
+﻿
+<EditForm Model="@shareFormInput" OnSubmit="@OnSubmit" Context="formContext">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+    <div class="autocomplete">
+        <div class="mb-3">
+            <input @bind=@shareFormInput.selectedUserEmail @oninput=HandleInput class="form-control filter" placeholder="Search by user name" />
+        </div>
+        @if (searchResult is not null)
+        {
+            <br />
+            <ul class="options">
+                @if (searchResult.Any())
+                {
+                    @foreach (var result in searchResult)
+                    {
+                        <li class="option" @onclick=@(_ => SelectUser(result))>
+                            <flex>
+                                <span class="option-text">@result.Name</span>
+                                <span class="option-text">@result.Email</span>
+                            </flex>
+                        </li>
+                    }
+                }
+                else
+                {
+                    <li class="disabled option">No results</li>
+                }
+            </ul>
+        }
+    </div>
+    <div>
+        <InputRadioGroup @bind-Value="@shareFormInput.permission">
+            @foreach (var permission in permissions)
+            {
+                @permission
+                <InputRadio Value="permission" />
+                <br>
+            }
+        </InputRadioGroup>
+    </div>
+
+    <button type="Submit" class="btn btn-primary">Submit</button>
+</EditForm>
+
+@if (sharedNoteUsersDto != null && sharedNoteUsersDto.Count>0)
+{
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Email</th>
+                <th scope="col">Permission</th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            
+                @foreach (var item in sharedNoteUsersDto)
+                    {
+                    <tr>
+                        <td>@item.UserName</td>
+                        <td>@item.UserEmail</td>
+                        <td>@item.Permission</td>
+                        <td><button type="Submit" class="btn btn-primary" @onclick="(()=>UnShare(item.UserId))">Remove</button></td>
+                    </tr>
+                    }
+           </tbody>
+    </table>
+}
+

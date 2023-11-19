@@ -1,0 +1,22 @@
+﻿
+<div class="autocomplete">
+    <input @bind=selectedNoteName @oninput=HandleInput class="form-control filter" />
+    @if (searchResult is not null)
+    {
+        <ul class="options">
+            @if (searchResult.Any())
+            {
+                @foreach (var result in searchResult)
+                {
+                    <li class="option" @onclick=@(_ => SelectNote(result.Id))>
+                        <span class="option-text">@result.Title</span>
+                    </li>
+                }
+            }
+            else
+            {
+                <li class="disabled option">No results</li>
+            }
+        </ul>
+    }
+</div>

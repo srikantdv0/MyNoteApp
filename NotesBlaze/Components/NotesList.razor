@@ -1,0 +1,192 @@
+﻿
+@using NotesBlaze.Services;
+@using NotesShared.Models;
+@inject INotesDataService notesDataService;
+@inject NavigationManager navigation;
+@inject IJSRuntime _jsr;
+@inject StateContainer stateContainer;
+
+@implements IDisposable;
+
+
+<nav class="flex-column">
+    @if (noteMetadata == null)
+    {
+        @*<p><em>Loading...</em></p>*@
+    }
+    else
+    {
+        <a href="note/new">New</a>
+
+        <div @onclick="Collapse" style="cursor:pointer; color:white">
+            <h6>My Notes (@noteMetadata.Count)</h6>
+        </div>
+        @if (!Collapsed)
+        {
+            <div class="list-group">
+
+                @foreach (var note in noteMetadata)
+                {
+                    <a @onclick="() => NavigateTo(note.Id,false)" class="list-group-item list-group-item-action flex-column align-items-start active">
+                        <div class="d-flex w-100 justify-content-between">
+                            <h9 class="mb-1">@note.Title</h9>
+                            <small>@GetTimeDiff(note.CreatedDTS)</small>
+                        </div>
+                    </a>
+                }
+            </div>
+        }
+
+
+    }
+
+    @if (sharedNoteMetadata != null && sharedNoteMetadata.Count > 0)
+        {
+        <div @onclick="CollapseShared" style="cursor:pointer; color:white">
+            <h6>Shared Notes (@sharedNoteMetadata.Count)</h6>
+        </div>
+    @if (!CollapsedShared)
+        {
+        <div class="list-group">
+
+            @foreach (var note in sharedNoteMetadata)
+                {
+                <a @onclick="() => NavigateTo(note.Id,true)" class="list-group-item list-group-item-action flex-column align-items-start active">
+                    <div class="d-flex w-100 justify-content-between">
+                        <h9 class="mb-1">@note.Title</h9>
+                        <small>@GetTimeDiff(note.CreatedDTS)</small>
+                    </div>
+                </a>
+                }
+        </div>
+        }
+        }
+</nav>
+
+
+@code {
+    private List<NoteMetadata>? noteMetadata;
+    private List<SharedNoteMetadata>? sharedNoteMetadata;
+    bool Collapsed;
+    bool CollapsedShared = true;
+
+    void Collapse(MouseEventArgs e)
+    {
+        Collapsed = !Collapsed;
+    }
+
+    void CollapseShared(MouseEventArgs e)
+    {
+        CollapsedShared = !CollapsedShared;
+    }
+
+    protected override void OnInitialized()
+    {
+        stateContainer.metaDataEvent += OnNoteMetaDataEventHandler;
+        stateContainer.sharedmetaDataEvent += OnSharedNoteMetaDataEventHandler;
+    }
+
+    private string GetTimeDiff(DateTime dateTime)
+    {
+        var timeNow = DateTime.UtcNow;
+        TimeSpan timeDiff = timeNow - dateTime;
+        var daysDiff = timeDiff.Days;
+        var minsDiff = timeDiff.Minutes;
+        var secsDiff =timeDiff.Seconds;
+        var hoursDiff = timeDiff.Hours;
+
+        if (daysDiff <= 7 && daysDiff >= 1)
+        {
+            return $"{daysDiff} days ago";
+        }
+        else if (daysDiff < 1 && hoursDiff > 1)
+        {
+            return $"{hoursDiff} hours ago";
+        }
+        else if (daysDiff < 1 && hoursDiff < 1 && minsDiff < 1)
+        {
+            return "Just now";
+        }
+        else if (daysDiff < 1 && hoursDiff < 1 && minsDiff < 60)
+        {
+            return $"{minsDiff} mins ago";
+        }
+        else
+        {
+            return $"{dateTime.Year}/{dateTime.Month}/{dateTime.Day}";
+        }
+
+    }
+
+    private void OnNoteMetaDataEventHandler(object? sender, IEnumerable<NoteMetadata>? noteMetadata)
+    {
+        if (noteMetadata != null)
+        {
+            this.noteMetadata = noteMetadata.ToList();
+
+        }
+        else
+        {
+            this.noteMetadata = null;
+        }
+        StateHasChanged();
+    }
+
+    private void OnSharedNoteMetaDataEventHandler(object? sender, IEnumerable<SharedNoteMetadata>? sharedNoteMetadata)
+    {
+        if (sharedNoteMetadata != null)
+        {
+            this.sharedNoteMetadata = sharedNoteMetadata.ToList();
+
+        }
+        else
+        {
+            this.sharedNoteMetadata = null;
+        }
+        StateHasChanged();
+    }
+
+
+    private async Task NavigateTo(int Id, bool IsShare)
+    {
+        if (IsShare)
+        {
+            var res = await notesDataService.GetSharedNotes(Id);
+            if (res != null)
+            {
+                stateContainer.SetValue(new NoteId
+                { Id = Id,
+                    IsShare = IsShare,
+                    Title = res.Title,
+                    CreatedDTS = res.CreatedDTS,
+                    ModifiedByName = res.ModifiedByName,
+                    ModifiedDTS = res.ModifiedDTS
+                });
+            }
+        }
+        else
+        {
+            var res = await notesDataService.GetNotes(Id);
+            if (res != null)
+            {
+                stateContainer.SetValue(new NoteId
+                {
+                    Id = Id,
+                    IsShare = IsShare,
+                    Title = res.Title,
+                    CreatedDTS = res.CreatedDTS,
+                    ModifiedByName = res.ModifiedByName,
+                    ModifiedDTS = res.ModifiedDTS
+                });
+            }
+        }
+        navigation.NavigateTo("/note");
+    }
+
+    public void Dispose()
+    {
+        stateContainer.metaDataEvent -= OnNoteMetaDataEventHandler;
+        stateContainer.sharedmetaDataEvent -= OnSharedNoteMetaDataEventHandler;
+    }
+    }
+
