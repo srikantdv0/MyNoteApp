@@ -33,8 +33,8 @@ namespace NotesBlaze.Components
             if (!String.IsNullOrEmpty(token))
             {
                 await _stateContainer.SaveUserSession(user,token);
-                _stateContainer?.GetNoteMetaData();
-                _stateContainer?.GetSharedNoteMetaData();
+                await _stateContainer.GetNoteMetaData();
+                await _stateContainer.GetSharedNoteMetaData();
                 _navigation.NavigateTo("/");
             }
             else {

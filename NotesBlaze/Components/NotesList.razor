@@ -17,7 +17,7 @@
     else
     {
         <a href="note/new">New</a>
-
+        <AutoComplete noteMetadata="@noteMetadata"/>
         <div @onclick="Collapse" style="cursor:pointer; color:white">
             <h6>My Notes (@noteMetadata.Count)</h6>
         </div>
@@ -41,26 +41,26 @@
     }
 
     @if (sharedNoteMetadata != null && sharedNoteMetadata.Count > 0)
-        {
+    {
         <div @onclick="CollapseShared" style="cursor:pointer; color:white">
             <h6>Shared Notes (@sharedNoteMetadata.Count)</h6>
         </div>
-    @if (!CollapsedShared)
+        @if (!CollapsedShared)
         {
-        <div class="list-group">
+            <div class="list-group">
 
-            @foreach (var note in sharedNoteMetadata)
+                @foreach (var note in sharedNoteMetadata)
                 {
-                <a @onclick="() => NavigateTo(note.Id,true)" class="list-group-item list-group-item-action flex-column align-items-start active">
-                    <div class="d-flex w-100 justify-content-between">
-                        <h9 class="mb-1">@note.Title</h9>
-                        <small>@GetTimeDiff(note.CreatedDTS)</small>
-                    </div>
-                </a>
+                    <a @onclick="() => NavigateTo(note.Id,true)" class="list-group-item list-group-item-action flex-column align-items-start active">
+                        <div class="d-flex w-100 justify-content-between">
+                            <h9 class="mb-1">@note.Title</h9>
+                            <small>@GetTimeDiff(note.CreatedDTS)</small>
+                        </div>
+                    </a>
                 }
-        </div>
+            </div>
         }
-        }
+    }
 </nav>
 
 
@@ -80,10 +80,13 @@
         CollapsedShared = !CollapsedShared;
     }
 
-    protected override void OnInitialized()
+    protected override async Task OnInitializedAsync()
     {
         stateContainer.metaDataEvent += OnNoteMetaDataEventHandler;
         stateContainer.sharedmetaDataEvent += OnSharedNoteMetaDataEventHandler;
+
+        await stateContainer.GetNoteMetaData();
+        await stateContainer.GetSharedNoteMetaData();
     }
 
     private string GetTimeDiff(DateTime dateTime)

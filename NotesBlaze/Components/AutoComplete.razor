@@ -1,22 +1,44 @@
-﻿
-<div class="autocomplete">
-    <input @bind=selectedNoteName @oninput=HandleInput class="form-control filter" />
-    @if (searchResult is not null)
-    {
-        <ul class="options">
-            @if (searchResult.Any())
-            {
-                @foreach (var result in searchResult)
+﻿<div class="autocomplete">
+    <form class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" @bind=selectedNoteName @oninput=HandleInput>
+        @if (searchResult is not null)
+        {
+            <ul class="options">
+                @if (searchResult.Any())
                 {
-                    <li class="option" @onclick=@(_ => SelectNote(result.Id))>
-                        <span class="option-text">@result.Title</span>
-                    </li>
+                    @foreach (var result in searchResult)
+                    {
+                        <li class="option" @onclick=@(_ => SelectNote(result.Id))>
+                            <span class="option-text">@result.Title</span>
+                        </li>
+                    }
                 }
-            }
-            else
-            {
-                <li class="disabled option">No results</li>
-            }
-        </ul>
-    }
+                else
+                {
+                    <li class="disabled option">No results</li>
+                }
+            </ul>
+        }
+    </form>
 </div>
+    @*<div class="autocomplete">
+        <input @bind=selectedNoteName @oninput=HandleInput class="form-control filter" />
+        @if (searchResult is not null)
+        {
+            <ul class="options">
+                @if (searchResult.Any())
+                {
+                    @foreach (var result in searchResult)
+                    {
+                        <li class="option" @onclick=@(_ => SelectNote(result.Id))>
+                            <span class="option-text">@result.Title</span>
+                        </li>
+                    }
+                }
+                else
+                {
+                    <li class="disabled option">No results</li>
+                }
+            </ul>
+        }
+    </div>*@

@@ -201,14 +201,14 @@
       "netstandard.dll": "sha256-6NXprR7wyUZxpdXxaSPHSoC5uOL5UCc7bsZG3TSuVxE=",
       "System.Private.CoreLib.dll": "sha256-igtwZSR0\/lrbmwL\/XiTsEkIeSL+736GHTZPReYguZCQ=",
       "NotesShared.dll": "sha256-Ae4c9q3rmff5TitMTtBz1gq6Z1GXzer1iYP+UojxQrE=",
-      "NotesBlaze.dll": "sha256-N2V0ETJ10w82HC3sqGotZBzvqOkD5YEwKIhB+iSqCUk="
+      "NotesBlaze.dll": "sha256-sGXMn\/DnLLaQkD0rBfgIp+m45tJaHtPvBidv+QO2KUw="
     },
     "extensions": null,
     "lazyAssembly": null,
     "libraryInitializers": null,
     "pdb": {
       "NotesShared.pdb": "sha256-5bDqAhvM7mPPseRo83x7l6WCDLcefgloov\/RtZCOElY=",
-      "NotesBlaze.pdb": "sha256-0lwOXPETRwRnT3W0ZD23mc+Z\/UAylyjPmdxlLSAqSU0="
+      "NotesBlaze.pdb": "sha256-cAIG4j40VUDQX3H9yWTJMgYaRS1v5\/0aNQNODj3uSeY="
     },
     "runtime": {
       "dotnet.6.0.14.i8ncm3xiye.js": "sha256-54cJ6JdGhGbKaLWxHfRYzYbuyRq2wlK\/ZDzfSXD3FEs=",
