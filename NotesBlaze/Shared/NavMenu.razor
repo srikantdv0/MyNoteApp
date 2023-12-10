@@ -1,10 +1,4 @@
-﻿@using NotesBlaze.Services;
-@using NotesShared.Models;
-@inject INotesDataService notesDataService;
-@inject NavigationManager navigation;
-@inject IJSRuntime _jsr;
-
-
+﻿
 <div class="top-row ps-3 navbar navbar-dark">
     <div class="container-fluid">
         <a class="navbar-brand" href="">Notes</a>
@@ -14,8 +8,8 @@
     </div>
 </div>
 
-<div class="@NavMenuCssClass">
-    <NotesList />
+<div class="@NavMenuCssClass" @onclick="ToggleNavMenu">
+    <NotesList/>
     <hr>
     <UserComponent/>
 </div>

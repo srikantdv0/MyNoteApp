@@ -201,9 +201,9 @@ namespace Notes.Controllers
 		}
 
 		[HttpGet("Getsharednotes")]
-        public async Task<ActionResult<IEnumerable<SharedNoteMetadata>>> GetSharedNotes(int? Id)
+        public ActionResult<IEnumerable<SharedNoteMetadata>> GetSharedNotes(int? Id)
         {
-            var res = await _noteRepository.GetSharedNotesAsync(userContextId);
+            var res =  _noteRepository.GetSharedNotesAsync(userContextId);
             if (res == null)
             {
                 return NotFound();

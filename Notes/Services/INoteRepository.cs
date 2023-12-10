@@ -15,7 +15,7 @@ namespace Notes.Services
         Task<Note?> GetNoteAsync(int noteId, int? userContextId);
         Task<IEnumerable<Note?>> GetNotesAsync(int? userContextId);
         Task<Note?> GetSharedNoteAsync(int noteId, int? userContextId);
-        Task<IEnumerable<Note?>> GetSharedNotesAsync(int? userContextId);
+        IEnumerable<Note?> GetSharedNotesAsync(int? userContextId);
 
         Task<SharedNote?> GetSharedNoteToAsync(int userId, int noteId);
 

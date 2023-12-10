@@ -52,11 +52,11 @@ else
                     </tr>
                     <tr>
                         <td>Created DTS</td>
-                        <td>@stateContainer?.noteId?.CreatedDTS</td>
+                        <td>@stateContainer?.noteId?.CreatedDTS.ToLocalTime()</td>
                     </tr>
                     <tr>
                         <td>Last Modified DTS</td>
-                        <td>@stateContainer?.noteId?.ModifiedDTS</td>
+                        <td>@stateContainer?.noteId?.ModifiedDTS?.ToLocalTime()</td>
                     </tr>
                     <tr>
                         <td>Modified by</td>

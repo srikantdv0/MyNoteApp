@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using Notes.DbContexts;
 using Notes.Entities;
@@ -83,20 +84,28 @@ namespace Notes.Services
             return await note.FirstOrDefaultAsync();
         }
 
-        public async Task<IEnumerable<Note?>> GetSharedNotesAsync(int? userContextId)
+        public IEnumerable<Note?> GetSharedNotesAsync(int? userContextId)
         {
             IQueryable<Note> notes = _context.Notes
                        .Where(i => i.SharedNote.Any()); ;
             if (userContextId != null)
             {
-                notes = notes.Include(i => i.SharedNote.Where(a => a.SharedToId == userContextId));
+                notes = notes.Include(a => a.SharedNote.Where(i => i.SharedToId == userContextId));
                 notes = notes.Where(i => i.CreatorId != userContextId);
             }
             else
             {
                 notes = notes.Include(i => i.SharedNote);
             }
-            return await notes.ToListAsync();
+            List<Note?> result = new List<Note?>();
+            foreach (var note in notes)
+            {
+                if (note.SharedNote.Where(i => i.SharedToId == userContextId).Count() > 0)
+                {
+                    result.Add(note);
+                }
+            }
+            return result;
         }
 
         public async Task<SharedNote?> GetSharedNoteToAsync(int userId, int noteId)

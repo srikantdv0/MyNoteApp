@@ -91,8 +91,8 @@
 
     private string GetTimeDiff(DateTime dateTime)
     {
-        var timeNow = DateTime.UtcNow;
-        TimeSpan timeDiff = timeNow - dateTime;
+        var timeNow = DateTime.UtcNow.ToLocalTime();
+        TimeSpan timeDiff = timeNow - dateTime.ToLocalTime();
         var daysDiff = timeDiff.Days;
         var minsDiff = timeDiff.Minutes;
         var secsDiff =timeDiff.Seconds;
