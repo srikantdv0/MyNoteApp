@@ -1,0 +1,9 @@
+Notes/bin/
+Notes/Logging/
+Notes/obj/
+NotesBlaze/bin/
+NotesBlaze/obj/
+NotesShared/bin/
+NotesShared/obj/
+.vs/
+.git/

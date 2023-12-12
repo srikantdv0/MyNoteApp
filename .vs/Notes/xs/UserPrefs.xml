@@ -1,0 +1,74 @@
+﻿<Properties StartupConfiguration="{02CA4547-5593-4198-8246-D330F25856B7}|Default">
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.Workbench ActiveDocument="NotesBlaze/Services/NotesDataService.cs">
+    <Files>
+      <File FileName="NotesBlaze/Services/NotesDataService.cs" Line="555" Column="1" IsPinned="True" />
+      <File FileName="Notes/Controllers/NotesController.cs" Line="153" Column="1" IsPinned="True" />
+      <File FileName="Notes/Entities/Note.cs" Line="1" Column="1" IsPinned="True" />
+      <File FileName="NotesBlaze/Components/NotesList.razor" Line="95" Column="61" />
+      <File FileName="NotesBlaze/Services/StateContainer.cs" Line="46" Column="29" />
+      <File FileName="Notes/Services/NoteRepository.cs" Line="87" Column="15" />
+      <File FileName="Notes/Program.cs" Line="118" Column="1" />
+      <File FileName="NotesShared/Models/SharedNoteMetadata.cs" Line="1" Column="1" />
+      <File FileName="NotesShared/Models/SharedNoteContentDto.cs" Line="1" Column="1" />
+      <File FileName="NotesShared/Models/SharedNoteUsersDto.cs" Line="1" Column="1" />
+      <File FileName="Notes/Entities/SharedNote.cs" Line="1" Column="1" />
+      <File FileName="NotesBlaze/Components/NoteContent.razor.cs" Line="1" Column="1" />
+      <File FileName="NotesBlaze/Components/ShareWith.razor.cs" Line="1" Column="1" />
+      <File FileName="NotesBlaze/Components/ShareWith.razor" Line="1" Column="1" />
+      <File FileName="Notes/DbContexts/NoteContext.cs" Line="1" Column="1" />
+      <File FileName="Notes/Services/INoteRepository.cs" Line="18" Column="27" />
+      <File FileName="NotesBlaze/Shared/NavMenu.razor" Line="4" Column="42" />
+      <File FileName="NotesBlaze/Shared/NavMenu.razor.css" Line="12" Column="2" />
+      <File FileName="NotesBlaze/Components/UserComponent.razor" Line="17" Column="64" />
+      <File FileName="NotesBlaze/Services/ToastService.cs" Line="1" Column="1" />
+      <File FileName="NotesBlaze/Components/NoteContent.razor" Line="59" Column="80" />
+      <File FileName="Notes/Controllers/UserController.cs" Line="193" Column="136" />
+      <File FileName="NotesBlaze/Components/ResetPassword.razor" Line="1" Column="1" />
+      <File FileName="NotesBlaze/Models/AuthModel.cs" Line="1" Column="1" />
+      <File FileName="NotesBlaze/Components/Login.razor" Line="1" Column="1" />
+      <File FileName=".gitignore" Line="7" Column="17" />
+      <File FileName="NotesBlaze/wwwroot/index.html" Line="7" Column="21" />
+      <File FileName="NotesBlaze/Program.cs" Line="1" Column="1" />
+      <File FileName="NotesShared/Models/ImageFile.cs" Line="8" Column="61" />
+      <File FileName="NotesBlaze/Components/UserProfile.razor" Line="18" Column="1" />
+      <File FileName="NotesBlaze/Components/UserProfile.razor.cs" Line="30" Column="143" />
+      <File FileName="NotesBlaze/Services/INotesDataService.cs" Line="31" Column="48" />
+      <File FileName="NotesBlaze/Components/ResetPassword.razor.cs" Line="10" Column="9" />
+      <File FileName="NotesBlaze/Components/Register.razor" Line="1" Column="1" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="Notes" expanded="True">
+            <Node name="Notes" expanded="True">
+              <Node name="Controllers" expanded="True" />
+              <Node name="DbContexts" expanded="True" />
+              <Node name="UserProfileImages" expanded="True" />
+            </Node>
+            <Node name="NotesBlaze" expanded="True">
+              <Node name="Components" expanded="True">
+                <Node name="ResetPassword.razor" expanded="True" />
+                <Node name="UserProfile.razor" expanded="True" />
+              </Node>
+              <Node name="Models" expanded="True" />
+              <Node name="Services" expanded="True">
+                <Node name="NotesDataService.cs" selected="True" />
+              </Node>
+              <Node name="wwwroot" expanded="True" />
+            </Node>
+            <Node name="NotesShared" expanded="True">
+              <Node name="Models" expanded="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.ItemProperties.Notes PreferredExecutionTarget="/Applications/Microsoft Edge.app" />
+</Properties>
