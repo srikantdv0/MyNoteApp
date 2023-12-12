@@ -1,0 +1,24 @@
+﻿
+@page "/userprofile";
+
+<h5>@message</h5>
+<div class="input-group">
+    <div class="custom-file">
+        <InputFile class="custom-file-input" single OnChange="OnChange" accept="image/png, image/jpeg, image/gif, image/HEIC" id="inputFile" />
+        <label class="custom-file-label" for="inputFile">Choose file</label>
+    </div>
+    <div class="input-group-append">
+        <button class="btn btn-success" @onclick="Upload" disabled="@isDisabled">Upload</button>
+    </div>
+</div>
+
+@if (filesBase64.Base64data != String.Empty)
+{
+    <img src="data:image/png;base64,@filesBase64.Base64data" />
+
+}
+
+@if (profilePic!=null)
+{
+    <img src="data:@profilePic.ContentType;base64,@profilePic.Base64data" />
+}

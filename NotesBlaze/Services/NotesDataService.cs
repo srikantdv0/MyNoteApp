@@ -543,6 +543,53 @@ namespace NotesBlaze.Services
             return null;
         }
 
+        public async Task<string> UploadProfilePic(ImageFile imageFile)
+        {
+            var token = await GetJWT();
+            if (String.IsNullOrEmpty(token))
+            {
+                return "Failed to authenticate user";
+            }
+            _httpClient.DefaultRequestHeaders.Authorization =
+            new AuthenticationHeaderValue("Bearer", token);
+
+            using (var msg = await _httpClient.PostAsJsonAsync<ImageFile>("/api/User/UploadImage", imageFile, System.Threading.CancellationToken.None))
+            {
+                if (msg.IsSuccessStatusCode)
+                {
+                    return $"Files uploaded";
+                }
+                return "Error uploading the file";
+            }
+        }
+
+        public async Task<ImageFile?> GetProfilePic()
+        {
+            var token = await GetJWT();
+            if (String.IsNullOrEmpty(token))
+            {
+                return null;
+            }
+            _httpClient.DefaultRequestHeaders.Authorization =
+            new AuthenticationHeaderValue("Bearer", token);
+
+            var response = await _httpClient.GetAsync("api/User/GetProfilePic");
+
+            if (response.StatusCode == System.Net.HttpStatusCode.Unauthorized)
+            {
+                await OnUnauthorized();
+                return null;
+            }
+            else if (response.IsSuccessStatusCode)
+            {
+                if (response.Content != null)
+                {
+                    return await response.Content.ReadFromJsonAsync<ImageFile>();
+                }
+            }
+            return null;
+        }
+
         private async Task OnUnauthorized()
         {
             _toastService.SetToast("Session Expired, Please login again.");

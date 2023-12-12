@@ -38,6 +38,7 @@
     <None Remove="Profiles\" />
     <None Remove="Logging\" />
     <None Remove="Notes.db" />
+    <None Remove="UserProfileImages\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Controllers\" />
@@ -46,6 +47,7 @@
     <Folder Include="Services\" />
     <Folder Include="Profiles\" />
     <Folder Include="Logging\" />
+    <Folder Include="UserProfileImages\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\NotesBlaze\NotesBlaze.csproj">

@@ -28,6 +28,8 @@ namespace NotesBlaze.Services
         Task<string?> UnSubscribeToNote(int Id);
         Task<IEnumerable<SharedNoteUsersDto>?> GetSharedNoteUsers(int NoteId);
         Task<string?> UnshareNote(int userId, int noteId);
+        Task<string> UploadProfilePic(ImageFile imageFiles);
+        Task<ImageFile?> GetProfilePic();
     }
 }
 
