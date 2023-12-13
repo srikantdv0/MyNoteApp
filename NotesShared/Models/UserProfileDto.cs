@@ -14,6 +14,9 @@ namespace NotesShared.Models
         [Required]
         [MaxLength(30)]
         public string Name { get; set; } = string.Empty;
+
+        [Required]
+        public DateTime CreatedDTS { get; set; }
     }
 }
 

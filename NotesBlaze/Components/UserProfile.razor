@@ -1,24 +1,51 @@
 ﻿
 @page "/userprofile";
 
-<h5>@message</h5>
-<div class="input-group">
-    <div class="custom-file">
-        <InputFile class="custom-file-input" single OnChange="OnChange" accept="image/png, image/jpeg, image/gif" id="inputFile" />
-        <label class="custom-file-label" for="inputFile">Choose file</label>
-    </div>
-    <div class="input-group-append">
-        <button class="btn btn-success" @onclick="Upload" disabled="@isDisabled">Upload</button>
-    </div>
-</div>
-
-@if (filesBase64.Base64data != String.Empty)
+@if (user != null)
 {
-    <img src="data:image/png;base64,@filesBase64.Base64data" />
+    @if (filesBase64.Base64data != String.Empty)
+    {
+        <img src="data:image/png;base64,@filesBase64.Base64data" />
 
-}
+    }
+    else if (profilePic != null)
+    {
+        <img src="data:@profilePic.ContentType;base64,@profilePic.Base64data" />
+    }
+    <table class="table">
+        <tbody>
 
-@if (profilePic!=null)
-{
-    <img src="data:@profilePic.ContentType;base64,@profilePic.Base64data" />
+            <tr>
+                <td>
+                    <div class="input-group">
+                        <div class="custom-file">
+                            <InputFile class="custom-file-input" single OnChange="OnChange" accept="image/png, image/jpeg, image/gif" id="inputFile" />
+                            @*<label class="custom-file-label" for="inputFile">Choose file</label>*@
+                        </div>
+                        @*<div class="input-group-append">*@
+
+                        @*</div>*@
+                    </div>
+                </td>
+                <td>
+                    <span>
+                        <button class="btn btn-primary" @onclick="Upload" disabled="@isDisabled">Upload</button>
+                        @message
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td>Name</td>
+                <td>@user.Name</td>
+            </tr>
+            <tr>
+                <td>Email Address</td>
+                <td>@user.Email</td>
+            </tr>
+            <tr>
+                <td>Created on</td>
+                <td>@user.CreatedDTS.ToLocalTime()</td>
+            </tr>
+        </tbody>
+    </table>
 }

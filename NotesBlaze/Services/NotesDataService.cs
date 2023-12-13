@@ -37,7 +37,12 @@ namespace NotesBlaze.Services
         public async Task<(string Message, UserProfileDto? UserProfile)> UserProfileAsync()
         {
 
-            var response1 = await _httpClient.GetAsync("/user/userProfile");
+            var response1 = await _httpClient.GetAsync("api/User/userProfile");
+            if (response1.StatusCode == System.Net.HttpStatusCode.Unauthorized)
+            {
+                await OnUnauthorized();
+                return ("Unauthorized", null);
+            }
             if (response1.IsSuccessStatusCode)
             {
                 var response = await response1.Content.ReadFromJsonAsync<UserProfileDto>();

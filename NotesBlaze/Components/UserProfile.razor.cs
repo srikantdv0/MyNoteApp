@@ -16,6 +16,7 @@ namespace NotesBlaze.Components
         string message = "InputFile";
         bool isDisabled = false;
         ImageFile profilePic = default!;
+        UserProfileDto user = default!;
 
         protected override async Task OnInitializedAsync()
         {
@@ -24,6 +25,16 @@ namespace NotesBlaze.Components
             {
                 profilePic = res;
             }
+            var userDetails = await notesDataService.UserProfileAsync();
+
+            if (userDetails.UserProfile != null)
+            {
+                user = userDetails.UserProfile;
+            }
+            else
+            {
+                message = "Error loading user data";
+            }
         }
 
         async Task OnChange(InputFileChangeEventArgs e)
@@ -31,7 +42,7 @@ namespace NotesBlaze.Components
             var files = e.GetMultipleFiles(); // get the files selected by the users
             foreach (var file in files)
             {
-                var resizedFile = await file.RequestImageFileAsync(file.ContentType, 640, 480); // resize the image file
+                var resizedFile = await file.RequestImageFileAsync(file.ContentType, 600, 480); // resize the image file
                 var buf = new byte[resizedFile.Size]; // allocate a buffer to fill with the file's data
                 using (var stream = resizedFile.OpenReadStream())
                 {

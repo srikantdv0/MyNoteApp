@@ -149,7 +149,8 @@ namespace Notes.Controllers
 					{
 						UserId = user.Id,
 						Email = user.Email,
-						Name = user.Name
+						Name = user.Name,
+						CreatedDTS = user.CreatedDTS
 					};
 					return Ok(userProfile);
 				}
