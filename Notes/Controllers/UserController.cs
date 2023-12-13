@@ -190,7 +190,9 @@ namespace Notes.Controllers
             }
 
 			var buf = Convert.FromBase64String(file.Base64data);
-			await System.IO.File.WriteAllBytesAsync(_env.ContentRootPath + "UserProfileImages" + System.IO.Path.DirectorySeparatorChar + user.Id, buf);
+			var directoryforDump = _env.ContentRootPath + "UserProfileImages";
+            System.IO.Directory.CreateDirectory(directoryforDump);
+			await System.IO.File.WriteAllBytesAsync(directoryforDump + System.IO.Path.DirectorySeparatorChar + user.Id, buf);
 			return Ok();
 			
         }
