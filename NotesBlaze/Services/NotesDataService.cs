@@ -36,7 +36,14 @@ namespace NotesBlaze.Services
 
         public async Task<(string Message, UserProfileDto? UserProfile)> UserProfileAsync()
         {
-
+            var token = await GetJWT();
+            if (String.IsNullOrEmpty(token))
+            {
+                NaviageToLogin();
+                return ("",null) ;
+            }
+            _httpClient.DefaultRequestHeaders.Authorization =
+            new AuthenticationHeaderValue("Bearer", token);
             var response1 = await _httpClient.GetAsync("api/User/userProfile");
             if (response1.StatusCode == System.Net.HttpStatusCode.Unauthorized)
             {

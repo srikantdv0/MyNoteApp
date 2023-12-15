@@ -23,11 +23,13 @@ namespace NotesBlaze.Services
         private List<NoteMetadata>? noteMetadata { get; set; }
         private List<SharedNoteMetadata>? sharedNoteMetadata { get; set; }
         private List<SharedNoteUsersDto>? sharedNoteUsersDto { get; set; }
+        private ImageFile? profilePic;
 
         public event Action OnStateChange = null!;
         public event EventHandler<IEnumerable<NoteMetadata>?> metaDataEvent = null!;
         public event EventHandler<IEnumerable<SharedNoteMetadata>?> sharedmetaDataEvent = null!;
         public event EventHandler<IEnumerable<SharedNoteUsersDto>?> sharedNoteUsersEvent = null!;
+        public event EventHandler<ImageFile?> profilePicEvent = default!;
 
         public event EventHandler userLoginEvent = null!;
         public event EventHandler userLogoutEvent = null!;
@@ -79,6 +81,22 @@ namespace NotesBlaze.Services
                 }
                 SharedNoteUsersEvent();
             }
+        }
+
+        public async Task<ImageFile?> GetProfilePic()
+        {
+            var res= await _notesDataService.GetProfilePic();
+            if (res != null)
+            {
+                profilePic = res;
+            }
+            ProfilePicEvent();
+            return profilePic;
+        }
+
+        public void ProfilePicEvent()
+        {
+            profilePicEvent?.Invoke(this,profilePic);
         }
 
         public void SharedNoteUsersEvent()

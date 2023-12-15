@@ -35,6 +35,7 @@ namespace NotesBlaze.Components
                 await _stateContainer.SaveUserSession(user,token);
                 await _stateContainer.GetNoteMetaData();
                 await _stateContainer.GetSharedNoteMetaData();
+                await _stateContainer.GetProfilePic();
                 _navigation.NavigateTo("/");
             }
             else {

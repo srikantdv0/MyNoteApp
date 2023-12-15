@@ -12,15 +12,18 @@ namespace NotesBlaze.Components
         [Inject]
         INotesDataService notesDataService { get; set; } = default!;
 
+        [Inject]
+        StateContainer stateContainer { get; set; } = default!;
+
         ImageFile filesBase64 = new ImageFile();
-        string message = "InputFile";
+        string message = String.Empty;
         bool isDisabled = false;
         ImageFile profilePic = default!;
         UserProfileDto user = default!;
 
         protected override async Task OnInitializedAsync()
         {
-            var res =  await notesDataService.GetProfilePic();
+            var res =  await stateContainer.GetProfilePic();
             if (res != null)
             {
                 profilePic = res;
@@ -31,14 +34,11 @@ namespace NotesBlaze.Components
             {
                 user = userDetails.UserProfile;
             }
-            else
-            {
-                message = "Error loading user data";
-            }
         }
 
         async Task OnChange(InputFileChangeEventArgs e)
         {
+            message = String.Empty;
             var files = e.GetMultipleFiles(); // get the files selected by the users
             foreach (var file in files)
             {
@@ -50,14 +50,17 @@ namespace NotesBlaze.Components
                 }
                 filesBase64 = new ImageFile { Base64data = Convert.ToBase64String(buf), ContentType = file.ContentType, FileName = file.Name }; // convert to a base64 string!!p
             }
-            message = "Click UPLOAD to continue";
         }
 
         async Task Upload()
         {
             isDisabled = true;
-            var res = await notesDataService.UploadProfilePic(filesBase64);
-            message = res;
+            if (filesBase64.Base64data != String.Empty)
+            {
+                var res = await notesDataService.UploadProfilePic(filesBase64);
+                message = res;
+                await stateContainer.GetProfilePic();
+            }
             isDisabled = false;
         }
     }
