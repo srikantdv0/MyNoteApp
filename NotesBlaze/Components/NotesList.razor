@@ -16,19 +16,29 @@
     }
     else
     {
-        <a href="note/new">New</a>
-        <AutoComplete noteMetadata="@noteMetadata"/>
-        <div @onclick="Collapse" style="cursor:pointer; color:white">
+        
+        <a href="/note/new" class="btn btn-outline-primary" role="button" aria-pressed="true" style="width: 95%;
+            margin-top:20px; margin-bottom:20px; margin-left:5px">New</a>
+        <AutoComplete noteMetadata="@noteMetadata" />
+         <div @onclick="Collapse" style="cursor:pointer; color:white; margin-top:10px">
             <h6>My Notes (@noteMetadata.Count)</h6>
-        </div>
+         </div>
         @if (!Collapsed)
         {
-            <div class="list-group">
+            <div class="list-group list-group-light list-group-small">
 
                 @foreach (var note in noteMetadata)
                 {
-                    <a @onclick="() => NavigateTo(note.Id,false)" class="list-group-item list-group-item-action flex-column align-items-start active">
-                        <div class="d-flex w-100 justify-content-between">
+                    @if (stateContainer.noteId.Id == note.Id)
+                    {
+                        setActive = "active";
+                    }
+                    else
+                    {
+                        setActive = String.Empty;
+                    }
+                    <a @onclick="() => NavigateTo(note.Id, false)" class="list-group-item @setActive">
+                        <div class="d-flex w-95 justify-content-between">
                             <h9 class="mb-1">@note.Title</h9>
                             <small>@GetTimeDiff(note.CreatedDTS)</small>
                         </div>
@@ -42,17 +52,25 @@
 
     @if (sharedNoteMetadata != null && sharedNoteMetadata.Count > 0)
     {
-        <div @onclick="CollapseShared" style="cursor:pointer; color:white">
+        <div @onclick="CollapseShared" style="cursor: pointer; color: white; margin-top: 20px">
             <h6>Shared Notes (@sharedNoteMetadata.Count)</h6>
         </div>
         @if (!CollapsedShared)
         {
-            <div class="list-group">
+            <div class="list-group list-group-light list-group-small">
 
                 @foreach (var note in sharedNoteMetadata)
                 {
-                    <a @onclick="() => NavigateTo(note.Id,true)" class="list-group-item list-group-item-action flex-column align-items-start active">
-                        <div class="d-flex w-100 justify-content-between">
+                    @if (stateContainer.noteId.Id == note.Id)
+                    {
+                        setActive = "active";
+                    }
+                    else
+                    {
+                        setActive = String.Empty;
+                    }
+                    <a @onclick="() => NavigateTo(note.Id, true)" class="list-group-item @setActive">
+                        <div class="d-flex w-90 justify-content-between">
                             <h9 class="mb-1">@note.Title</h9>
                             <small>@GetTimeDiff(note.CreatedDTS)</small>
                         </div>
@@ -69,6 +87,7 @@
     private List<SharedNoteMetadata>? sharedNoteMetadata;
     bool Collapsed;
     bool CollapsedShared = true;
+    string setActive = String.Empty;
 
     void Collapse(MouseEventArgs e)
     {
