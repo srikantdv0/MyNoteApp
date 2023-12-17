@@ -19,8 +19,8 @@
                         <span >@username</span>
                 }
             </a>
-            <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
-                <li><a class="dropdown-item" href="/userprofile">Profile</a></li>
+            <ul class="dropdown-menu dropdown-menu-light text-small shadow">
+                <li><a class="dropdown-item" href="/userprofile" @onclick="()=>OnNavItemSelection.InvokeAsync()">Profile</a></li>
                 <li>
                     <hr class="dropdown-divider">
                 </li>
@@ -38,6 +38,9 @@
 
 
 @code {
+
+    [Parameter]
+    public EventCallback OnNavItemSelection { get; set; }
 
     string username = string.Empty;
 
@@ -63,7 +66,7 @@
             username = userdata.Split(';', 2)[0];
         }
 
-       
+
 
     }
 

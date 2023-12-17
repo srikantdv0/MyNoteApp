@@ -67,7 +67,7 @@ namespace NotesBlaze.Components
             if (filter?.Length > 2)
             {
                 searchResult = await Task.FromResult(usersMetaData?.Where(a => a.Name.Contains(filter))
-                    .Where(a => a.Email != userName).ToList());
+                    .Where(a => a.Email != userName).Take(10).ToList());
             }
             else
             {

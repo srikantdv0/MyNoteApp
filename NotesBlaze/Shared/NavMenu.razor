@@ -11,11 +11,10 @@
     </div>
 </div>
 
-@*@onclick="ToggleNavMenu"*@
 <div class="@NavMenuCssClass">
-    <NotesList />
+    <NotesList OnNavItemSelection="ToggleNavMenu"/>
     <hr>
-    <UserComponent />
+    <UserComponent OnNavItemSelection="ToggleNavMenu"/>
 </div>
 
 @code {

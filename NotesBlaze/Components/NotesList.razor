@@ -15,11 +15,11 @@
         @*<p><em>Loading...</em></p>*@
     }
     else
-    {
-        
+    { 
         <a href="/note/new" class="btn btn-outline-primary" role="button" aria-pressed="true" style="width: 95%;
-            margin-top:20px; margin-bottom:20px; margin-left:5px">New</a>
-        <AutoComplete noteMetadata="@noteMetadata" />
+            margin-top:20px; margin-bottom:20px; margin-left:5px"
+           @onclick="() => OnNavItemSelection.InvokeAsync()">New</a>
+        <AutoComplete noteMetadata="@noteMetadata" OnNavItemSelection="() => OnNavItemSelection.InvokeAsync()"/>
          <div @onclick="Collapse" style="cursor:pointer; color:white; margin-top:10px">
             <h6>My Notes (@noteMetadata.Count)</h6>
          </div>
@@ -83,6 +83,10 @@
 
 
 @code {
+
+    [Parameter]
+    public EventCallback OnNavItemSelection {get;set;}
+
     private List<NoteMetadata>? noteMetadata;
     private List<SharedNoteMetadata>? sharedNoteMetadata;
     bool Collapsed;
@@ -202,6 +206,7 @@
                 });
             }
         }
+        await OnNavItemSelection.InvokeAsync();
         navigation.NavigateTo("/note");
     }
 

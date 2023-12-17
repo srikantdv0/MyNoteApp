@@ -10,6 +10,9 @@ namespace NotesBlaze.Components
     public partial class AutoComplete : ComponentBase
     {
         [Parameter]
+        public EventCallback OnNavItemSelection { get; set; }
+
+        [Parameter]
         public List<NoteMetadata>? noteMetadata { get; set; }
 
         [Inject]
@@ -28,7 +31,7 @@ namespace NotesBlaze.Components
             filter = e.Value?.ToString();
             if (filter?.Length > 2)
             {
-                searchResult = await Task.FromResult(noteMetadata?.Where(a => a.Title.Contains(filter)).ToList());
+                searchResult = await Task.FromResult(noteMetadata?.Where(a => a.Title.Contains(filter)).Take(10).ToList());
             }
             else
             {
@@ -45,6 +48,7 @@ namespace NotesBlaze.Components
             searchResult = null;
             filter = null;
             selectedNoteName = null;
+            OnNavItemSelection.InvokeAsync();
         }
     }
 }
