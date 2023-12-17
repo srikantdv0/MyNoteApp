@@ -212,6 +212,7 @@ namespace NotesBlaze.Services
 
         public async Task<NoteContentDto?> GetNote(int id)
         {
+            _toastService.SetToast("Hello this is toast!!!");
             var token = await GetJWT();
             if (String.IsNullOrEmpty(token))
             {
@@ -234,6 +235,7 @@ namespace NotesBlaze.Services
                                  ?? throw new NullReferenceException(nameof(response));
                 }
             }
+            
             return null;
         }
 

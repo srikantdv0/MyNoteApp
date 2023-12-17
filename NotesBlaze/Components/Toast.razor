@@ -1,13 +1,13 @@
 ﻿
 @if (!String.IsNullOrEmpty(_toastMessage))
     {
-<div class="toast-container position-absolute bottom-0 start-50 mt-10 pt-10 pe-5" style="background-color:yellow">
-    <div class="toast show" role="alert" aria-live="assertive" aria-atomic="true">
+<div class="toast-container position-fixed bottom-0 end-0 p-3">
+    <div class="toast show text-white bg-warning border-0" role="alert" aria-live="assertive" aria-atomic="true">
         <div class="d-flex">
             <div class="toast-body">
                 @_toastMessage
             </div>
-            <button type="button" class="btn-close me-2 m-auto" aria-label="Close" @onclick="OnClose"></button>
+            <button type="button" class="tn-close btn-close-white me-2 m-auto" aria-label="Close" @onclick="OnClose"></button>
         </div>
     </div>
     </div>

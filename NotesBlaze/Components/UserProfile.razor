@@ -5,26 +5,21 @@
 {
     @if (filesBase64.Base64data != String.Empty)
     {
-        <img src="data:@filesBase64.ContentType;base64,@filesBase64.Base64data" />
+        <img src="data:@filesBase64.ContentType;base64,@filesBase64.Base64data" style="margin-left: auto; margin-right: auto; display: block; width: 50%" />
 
     }
     else if (profilePic != null)
     {
-        <img src="data:@profilePic.ContentType;base64,@profilePic.Base64data" />
+        <img src="data:@profilePic.ContentType;base64,@profilePic.Base64data" style="margin-left:auto;margin-right:auto;display:block;width:50%" />
     }
-    <table class="table">
+    <table class="table table-sm" style="margin-left:auto;margin-right:auto;width:50%">
         <tbody>
-
             <tr>
                 <td>
                     <div class="input-group">
                         <div class="custom-file">
                             <InputFile class="custom-file-input" single OnChange="OnChange" accept="image/png, image/jpeg, image/gif" id="inputFile" />
-                            @*<label class="custom-file-label" for="inputFile">Choose file</label>*@
                         </div>
-                        @*<div class="input-group-append">*@
-
-                        @*</div>*@
                     </div>
                 </td>
                 <td>
@@ -34,18 +29,22 @@
                     </span>
                 </td>
             </tr>
-            <tr>
-                <td>Name</td>
-                <td>@user.Name</td>
-            </tr>
-            <tr>
-                <td>Email Address</td>
-                <td>@user.Email</td>
-            </tr>
-            <tr>
-                <td>Created on</td>
-                <td>@user.CreatedDTS.ToLocalTime()</td>
-            </tr>
-        </tbody>
-    </table>
-}
+            </tbody>
+        </table>
+            <table class="table table-striped">
+                <tbody>
+                    <tr>
+                        <td>Name</td>
+                        <td>@user.Name</td>
+                    </tr>
+                    <tr>
+                        <td>Email Address</td>
+                        <td>@user.Email</td>
+                    </tr>
+                    <tr>
+                        <td>Created on</td>
+                        <td>@user.CreatedDTS.ToLocalTime()</td>
+                    </tr>
+                </tbody>
+            </table>
+            }

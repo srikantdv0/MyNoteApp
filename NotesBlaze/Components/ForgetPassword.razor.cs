@@ -47,6 +47,10 @@ namespace NotesBlaze.Components
 
         private async Task SendOTP()
         {
+            if (String.IsNullOrEmpty(confirmOTP.email))
+            {
+                return;
+            }
             isSendOTPDisabled = true;
             counter = 30;
             var res = await _notesDataService.SendOTPAsync(confirmOTP);
