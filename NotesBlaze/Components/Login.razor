@@ -13,7 +13,13 @@
         <InputText type="password" class="form-control" @bind-Value="@user.password" placeholder="Enter Password"></InputText>
     </div>
     <div class="mb-2 text-right">
-        <button class="btn btn-primary" disabled="@isDisabled">Login</button>
+        <button class="btn btn-primary" disabled="@isDisabled">
+            @if (isDisabled)
+                {
+                    <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                }
+                Login
+             </button>
     </div>
     </EditForm>
 <span><a href="/forgetpassword">Forget Password</a>        <a href="/register">Sign Up</a></span>

@@ -1,8 +1,15 @@
 ﻿
 @page "/userprofile";
 
-@if (user != null)
+@if (user == null)
 {
+    <div class="spinner-border text-primary" role="status">
+        <span class="visually-hidden">Loading...</span>
+    </div>
+}
+else
+{
+
     @if (filesBase64.Base64data != String.Empty)
     {
         <img src="data:@filesBase64.ContentType;base64,@filesBase64.Base64data" style="margin-left: auto; margin-right: auto; display: block; width: 50%" />
@@ -29,22 +36,22 @@
                     </span>
                 </td>
             </tr>
-            </tbody>
-        </table>
-            <table class="table table-striped">
-                <tbody>
-                    <tr>
-                        <td>Name</td>
-                        <td>@user.Name</td>
-                    </tr>
-                    <tr>
-                        <td>Email Address</td>
-                        <td>@user.Email</td>
-                    </tr>
-                    <tr>
-                        <td>Created on</td>
-                        <td>@user.CreatedDTS.ToLocalTime()</td>
-                    </tr>
-                </tbody>
-            </table>
-            }
+        </tbody>
+    </table>
+    <table class="table table-striped">
+        <tbody>
+            <tr>
+                <td>Name</td>
+                <td>@user.Name</td>
+            </tr>
+            <tr>
+                <td>Email Address</td>
+                <td>@user.Email</td>
+            </tr>
+            <tr>
+                <td>Created on</td>
+                <td>@user.CreatedDTS.ToLocalTime()</td>
+            </tr>
+        </tbody>
+    </table>
+}
