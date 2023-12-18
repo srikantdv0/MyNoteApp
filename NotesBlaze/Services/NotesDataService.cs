@@ -212,7 +212,6 @@ namespace NotesBlaze.Services
 
         public async Task<NoteContentDto?> GetNote(int id)
         {
-            _toastService.SetToast("Hello this is toast!!!");
             var token = await GetJWT();
             if (String.IsNullOrEmpty(token))
             {
@@ -287,6 +286,7 @@ namespace NotesBlaze.Services
             }
             else if (response.IsSuccessStatusCode)
             {
+                _toastService.SetToast("Note is updated.");
                 return "Success";
             }
             else

@@ -90,6 +90,10 @@ namespace NotesBlaze.Services
             {
                 profilePic = res;
             }
+            else
+            {
+                profilePic = null;
+            }
             ProfilePicEvent();
             return profilePic;
         }

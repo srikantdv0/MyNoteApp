@@ -9,15 +9,15 @@
     {
         <div class="dropdown pb-4">
             <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-                @if (profilePic != null)
+                    @if (profilePic != null)
                     {
-                <img src="data:@profilePic.ContentType;base64,@profilePic.Base64data" alt="hugenerd" width="30" height="30" class="rounded-circle">
-                <span class="d-none d-sm-inline mx-1">@username</span>
+                        <img src="data:@profilePic.ContentType;base64,@profilePic.Base64data" alt="hugenerd" width="30" height="30" class="rounded-circle">
+                        <span style="padding-left:.5rem">@username</span>
                     }
                     else
-                {
+                    {
                         <span >@username</span>
-                }
+                    }
             </a>
             <ul class="dropdown-menu dropdown-menu-light text-small shadow">
                 <li><a class="dropdown-item" href="/userprofile" @onclick="()=>OnNavItemSelection.InvokeAsync()">Profile</a></li>
@@ -45,7 +45,7 @@
     string username = string.Empty;
 
     private List<NoteMetadata>? noteMetadata;
-    private ImageFile profilePic = default!;
+    private ImageFile? profilePic;
 
     protected override async Task OnInitializedAsync()
     {
@@ -76,6 +76,10 @@
         if (profilePic != null)
         {
             this.profilePic = profilePic;
+        }
+        else
+        {
+            this.profilePic = null;
         }
         StateHasChanged();
     }
