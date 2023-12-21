@@ -22,13 +22,13 @@ namespace Notes.Services
         Task ShareNoteAsync(int userId, int noteId, int permissionId);
 		void UnShareNote(SharedNote sharedNote);
 
-        Task<int?> GetNoteCreator(int noteId);
+        Task<int?> GetNoteCreatorAsync(int noteId);
         Task<IEnumerable<Permission>> LoadSharedPermissionMetadata();
-        Task<string?> GetSharedPermission(int noteId, int userId);
+        Task<string?> GetSharedPermissionAsync(int noteId, int userId);
 
         Task<User?> IsValidAsync(string email,string password);
 
-        Task<IEnumerable<SharedNote?>> GetSharedNoteDetails(int noteId);
+        Task<IEnumerable<SharedNote?>> GetSharedNoteDetailsAsync(int noteId);
     }
 }
 

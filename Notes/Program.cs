@@ -21,8 +21,8 @@ Log.Logger = new LoggerConfiguration()
 
 #if RELEASE
 Log.Logger = new LoggerConfiguration()
-    .MinimumLevel.Debug()
-    .WriteTo.File(builder.Configuration["LoggingPath"], rollingInterval: RollingInterval.Day)
+    .MinimumLevel.Warning()
+    .WriteTo.File(builder.Configuration["LoggingPath"], rollingInterval: RollingInterval.Day, retainedFileCountLimit:5)
     .CreateLogger();
 #endif
 
@@ -94,13 +94,13 @@ builder.Services.AddAuthorization();
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
-//if (app.Environment.IsDevelopment())
-//{
+//Configure the HTTP request pipeline.
+if (app.Environment.IsDevelopment())
+{
     app.UseSwagger();
     app.UseSwaggerUI();
     app.UseWebAssemblyDebugging();
-//}
+}
 
 app.UseBlazorFrameworkFiles();
 

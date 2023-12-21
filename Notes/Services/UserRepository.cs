@@ -47,13 +47,13 @@ namespace Notes.Services
             return (await _context.SaveChangesAsync() >= 0);
         }
 
-        public async Task AddOtp(Otp otp)
+        public async Task AddOtpAsync(Otp otp)
         {
-            await ExpireOtps(otp.EmailId);
+            await ExpireOtpsAsync(otp.EmailId);
             await _context.AddAsync(otp);
         }
 
-        public async Task<int> GetOtp(string emailAddress)
+        public async Task<int> GetOtpAsync(string emailAddress)
         {
             var res = await _context.Otps.Where(o => o.EmailId == emailAddress && o.IsUsed == false && o.ValidTill >= DateTime.UtcNow).FirstOrDefaultAsync();
             if (res != null)
@@ -62,12 +62,12 @@ namespace Notes.Services
                 return 0;
         }
 
-        public async Task<IEnumerable<Otp>> GetOtps()
+        public async Task<IEnumerable<Otp>> GetOtpsAsync()
         {
             return await _context.Otps.ToListAsync();
         }
 
-        private async Task ExpireOtps(string emailAddress)
+        private async Task ExpireOtpsAsync(string emailAddress)
         {
             var otps = await _context.Otps.Where(o => o.EmailId == emailAddress).ToListAsync();
             if (otps.Count > 0)

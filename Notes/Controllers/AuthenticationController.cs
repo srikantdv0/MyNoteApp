@@ -55,7 +55,6 @@ namespace Notes.Controllers
                 claimsForToken,
                 DateTime.UtcNow,
                 DateTime.UtcNow.AddHours(1),
-                //DateTime.UtcNow.AddSeconds(60),
                 signingCredentials);
 
             var tokenToReturn = new JwtSecurityTokenHandler()

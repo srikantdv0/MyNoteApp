@@ -297,7 +297,7 @@ namespace Notes.Controllers
                 return Unauthorized("You don't have permission");
             }
 
-            var shared = await _noteRepository.GetSharedNoteDetails(noteId);
+            var shared = await _noteRepository.GetSharedNoteDetailsAsync(noteId);
 
             var sharedNote = _mapper.Map<IEnumerable<SharedNoteUsersDto>>(shared);
             return Ok(sharedNote);
@@ -335,7 +335,7 @@ namespace Notes.Controllers
 		{
             if (!(ownerId == userContextId))
             {
-                var perm = await _noteRepository.GetSharedPermission(noteId, userContextId);
+                var perm = await _noteRepository.GetSharedPermissionAsync(noteId, userContextId);
                 if (perm == null || !requiredPermissions.Contains(perm))
                 {
 					return false;

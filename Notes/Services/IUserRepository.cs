@@ -9,9 +9,9 @@ namespace Notes.Services
 		void ResetPasswordAsync(User user);
 		Task<User?> GetUserAsync(string emailAddress);
         Task<bool> SaveChangesAsync();
-		Task<int> GetOtp(string emailAddress);
-		Task AddOtp(Otp otp);
-		Task<IEnumerable<Otp>> GetOtps();
+		Task<int> GetOtpAsync(string emailAddress);
+		Task AddOtpAsync(Otp otp);
+		Task<IEnumerable<Otp>> GetOtpsAsync();
         Task<IEnumerable<User?>> GetUsersAsync();
     }
 }

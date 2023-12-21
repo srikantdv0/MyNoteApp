@@ -41,7 +41,7 @@ namespace Notes.Services
             
         }
 
-        public async Task<int?> GetNoteCreator(int noteId)
+        public async Task<int?> GetNoteCreatorAsync(int noteId)
         {
             return await _context.Notes
                 .Where(n => n.Id == noteId)
@@ -59,7 +59,7 @@ namespace Notes.Services
             return await notes.OrderByDescending(a => a.CreatedDTS).ToListAsync();
         }
 
-        public async Task<IEnumerable<SharedNote?>> GetSharedNoteDetails(int noteId)
+        public async Task<IEnumerable<SharedNote?>> GetSharedNoteDetailsAsync(int noteId)
         {
            return await _context.SharedNotes
                 .Include(a => a.User)
@@ -116,7 +116,7 @@ namespace Notes.Services
 
         }
 
-        public async Task<string?> GetSharedPermission(int noteId, int userId)
+        public async Task<string?> GetSharedPermissionAsync(int noteId, int userId)
         {
             var permission = await GetSharedNoteToAsync(userId, noteId);
             if (permission == null)
@@ -186,4 +186,3 @@ namespace Notes.Services
 
     }
 }
-

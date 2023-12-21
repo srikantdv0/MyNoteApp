@@ -100,15 +100,15 @@ namespace Notes.Controllers
 				ValidTill = DateTime.UtcNow.AddMinutes(5),
 				Code = otp
 			};
-			await _userRepository.AddOtp(toSave);
+			await _userRepository.AddOtpAsync(toSave);
 			await _userRepository.SaveChangesAsync();
 			return Ok("Mail Sent");
 		}
 
 		[HttpPost("VerifyOtp")]
-		public async Task<IActionResult> VerifyOtp(ConfirmOTP confirmOTP)
+		public async Task<IActionResult> VerifyOtpAsync(ConfirmOTP confirmOTP)
 		{
-			var res = await _userRepository.GetOtp(confirmOTP.email);
+			var res = await _userRepository.GetOtpAsync(confirmOTP.email);
 			if (res == 0)
 			{
 				return Ok(false);
@@ -126,13 +126,6 @@ namespace Notes.Controllers
 			}
 			return Ok(false);
 		}
-
-		//To be removed
-		[HttpGet("GetUserDetails")]
-		public async Task<ActionResult<IEnumerable<Otp>>> GetUser()
-		{
-			return Ok(await _userRepository.GetOtps());
-        }
 
 		[Authorize]
 		[HttpGet("userProfile")]
@@ -204,15 +197,15 @@ namespace Notes.Controllers
 		{
             var email = User.Claims.Where(d => d.Type == "UserEmailAddress")
                     .Select(d => d.Value).FirstOrDefault();
-            if (email == null)
-            {
-                return Unauthorized();
-            }
-            var user = await _userRepository.GetUserAsync(email);
-            if (user == null)
-            {
-                return Unauthorized();
-            }
+			if (email == null)
+			{
+				return Unauthorized();
+			}
+			var user = await _userRepository.GetUserAsync(email);
+			if (user == null)
+			{
+				return Unauthorized();
+			}
 			var filePath = _env.ContentRootPath + "UserProfileImages" + System.IO.Path.DirectorySeparatorChar + user.Id;
 
             if (!System.IO.File.Exists(filePath))
