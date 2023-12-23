@@ -44,26 +44,9 @@ namespace NotesBlaze.Components
 
             if (register == "Success")
             {
-                var login = new LoginModel { email = userForCreationDTO.Email, password = userForCreationDTO.Password };
-                var token = await _notesDataService.LoginAsync(login);
-                if (!String.IsNullOrEmpty(token))
-                {
-                    await _jSRuntime.InvokeVoidAsync("localStorage.setItem", "user", $"{userForCreationDTO.Email};{token}").ConfigureAwait(false);
-                    _navigation.NavigateTo("/", true);
-                }
-                else
-                {
-
-                    message = "Invalid credientials";
-                    isDisabled = false;
-                }
+                _navigation.NavigateTo("/login", false);
             }
-            else
-            {
-                message = register;
-                isDisabled = false;
-            }
-
+            isDisabled = false;
         }
     }
 }

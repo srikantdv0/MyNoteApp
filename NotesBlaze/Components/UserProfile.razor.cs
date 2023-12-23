@@ -30,9 +30,9 @@ namespace NotesBlaze.Components
             }
             var userDetails = await notesDataService.UserProfileAsync();
 
-            if (userDetails.UserProfile != null)
+            if (userDetails != null)
             {
-                user = userDetails.UserProfile;
+                user = userDetails;
             }
         }
 

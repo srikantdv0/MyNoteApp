@@ -28,7 +28,7 @@ namespace NotesBlaze.Components
         private async Task OnValid()
         {
             isDisabled = true;
-
+            message = "";
             var token = await _notesDataService.LoginAsync(user);
             if (!String.IsNullOrEmpty(token))
             {

@@ -24,7 +24,13 @@
             <ValidationSummary />
             <textarea @bind="@noteContentForm.Title" />
             <textarea @bind="@noteContentForm.Content" class="full-width" />
-            <button type="Submit" class="btn btn-primary" @onclick="@(()=>Submit())" hidden="@hideUpdateBtn">Update</button>
+            <button type="Submit" class="btn btn-primary" @onclick="@(()=>Submit())" hidden="@hideUpdateBtn" disabled="@isUpdateBtnDisabled">
+                @if (isUpdateBtnDisabled)
+                {
+                    <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                }
+                Update
+            </button>
             <button class="btn btn-primary" hidden="@hideDeleteBtn" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</button>
             <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight" hidden="@hideShareBtn" @onclick="@(()=> OnBoardShareItem())">Share</button>
             <button class="btn btn-primary" hidden="@hideUnsubscribeBtn" data-bs-toggle="modal" data-bs-target="#unsubscribeModal">Unsubscribe</button>

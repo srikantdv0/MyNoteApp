@@ -32,6 +32,7 @@ namespace NotesBlaze.Components
         private bool hideShareBtn = false;
         private bool hideDeleteBtn = false;
         private bool hideUnsubscribeBtn = true;
+        private bool isUpdateBtnDisabled = false;
 
 
         protected async override Task OnInitializedAsync()
@@ -97,12 +98,14 @@ namespace NotesBlaze.Components
         {
             if (noteContentForm != null)
             {
+                isUpdateBtnDisabled = true;
                 var content = new NoteContentDto
                 {
                     Title = noteContentForm.Title,
                     Content = noteContentForm.Content
                 };
                 await notesDataService.UpdateNote(id, content);
+                isUpdateBtnDisabled = false;
             }
            
         }

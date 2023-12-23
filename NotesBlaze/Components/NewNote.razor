@@ -18,10 +18,18 @@
 }
 else
 {
-    <EditForm Model="@notesForCreationDto" OnSubmit="@Submit" Context="formContext">
-        <textarea @bind="@notesForCreationDto.Title" />
-        <textarea @bind="@notesForCreationDto.Content" class="full-width" />
-        <button class="btn btn-primary" type="Submit">Save</button>
+<EditForm Model="@notesForCreationDto" OnValidSubmit="@Submit" Context="formContext">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+    <textarea @bind="@notesForCreationDto.Title" />
+    <textarea @bind="@notesForCreationDto.Content" class="full-width" />
+    <button class="btn btn-primary" type="Submit" disabled="@isDisabled">
+        @if (isDisabled)
+        {
+            <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+        }
+        Save
+    </button>
     </EditForm>
 }
 

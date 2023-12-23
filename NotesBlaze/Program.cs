@@ -4,6 +4,9 @@ using NotesBlaze;
 using NotesBlaze.Services;
 using Microsoft.AspNetCore.Components.Authorization;
 using Blazored.LocalStorage;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.JSInterop;
+using Microsoft.AspNetCore.Components;
 
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
 
@@ -14,10 +17,18 @@ builder.RootComponents.Add<HeadOutlet>("head::after");
 
 builder.Services.AddSingleton<ToastService>();
 
-builder.Services.AddHttpClient<INotesDataService, NotesDataService>(client =>
-   client.BaseAddress = new Uri(builder.HostEnvironment.BaseAddress));
 
-builder.Services.AddSingleton<StateContainer>();
+builder.Services.AddHttpClient<IApiCallHandler, ApiCallHandler>(client =>
+   client.BaseAddress = new Uri(builder.HostEnvironment.BaseAddress))
+    .AddHttpMessageHandler(provider =>
+    {
+        var jsRuntime = provider.GetRequiredService<IJSRuntime>();
+        return new AuthDelegatingHandler(jsRuntime);
+    });
+
+builder.Services.AddScoped<INotesDataService,NotesDataService>();
+
+builder.Services.AddScoped<StateContainer>();
 
 
 
