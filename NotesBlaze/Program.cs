@@ -17,6 +17,7 @@ builder.RootComponents.Add<HeadOutlet>("head::after");
 
 builder.Services.AddSingleton<ToastService>();
 
+builder.Services.AddSingleton<CheckIfOffline>();
 
 builder.Services.AddHttpClient<IApiCallHandler, ApiCallHandler>(client =>
    client.BaseAddress = new Uri(builder.HostEnvironment.BaseAddress))

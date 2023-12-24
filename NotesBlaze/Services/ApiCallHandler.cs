@@ -12,20 +12,31 @@ namespace NotesBlaze.Services
         private readonly IJSRuntime _jSRuntime;
         private readonly NavigationManager _navigationManager;
         private readonly ToastService _toastService;
-        
+        private readonly CheckIfOffline _checkIfOffline;
+
 
         public ApiCallHandler(HttpClient httpClient, IJSRuntime jSRuntime, NavigationManager navigationManager,
-                               ToastService toastService)
+                               ToastService toastService, CheckIfOffline checkIfOffline)
         {
             _httpClient = httpClient;
             _jSRuntime = jSRuntime;
             _navigationManager = navigationManager;
             _toastService = toastService;
+            _checkIfOffline = checkIfOffline;
         }
+
 
         public async Task<HttpResponseMessage?> ApiCall(string requestType,string uri,string? jsonSerializedContent)
         {
-            //check for offline/onlinc status comes here
+            if (!_checkIfOffline.IsInitialzed)
+            {
+                await _checkIfOffline.InitializeAsync();
+            }
+            if (!_checkIfOffline.IsOnline)
+            {
+                ToastNotification("No internet connection");
+                return null;
+            }
 
             HttpResponseMessage responseMessage;
             if (requestType == "Post")
