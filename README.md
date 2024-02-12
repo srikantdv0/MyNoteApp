@@ -46,10 +46,35 @@ git clone https://github.com/srikantdv0/mynoteapp.git
 ## Usage
 
 1. Register for a new account or log in if you already have one.
-2. Once logged in, you can create, edit, and delete notes as needed.
-3. Use the search feature to quickly find specific notes by title.
-4. Share notes into different users with Read/ReeadWrite permissions.
-5. Log out when you're done using the application to secure your account.
+   <img width="1440" alt="Screenshot 2024-02-11 at 2 00 22 PM" src="https://github.com/srikantdv0/MyNoteApp/assets/151364655/0c2f2cb6-e108-4ee3-8fab-f3bf736db177">
+   <img width="1440" alt="Screenshot 2024-02-11 at 2 02 04 PM" src="https://github.com/srikantdv0/MyNoteApp/assets/151364655/ca6134f2-bec2-4137-b698-b50a3d4a2e39">
+
+2. Incase you forgot the password, recover it
+   <img width="1440" alt="Screenshot 2024-02-11 at 2 02 30 PM" src="https://github.com/srikantdv0/MyNoteApp/assets/151364655/03c290cc-a893-4da3-adbc-edb89dff3d95">   
+   <img width="1440" alt="Screenshot 2024-02-11 at 2 03 15 PM" src="https://github.com/srikantdv0/MyNoteApp/assets/151364655/61cbe60f-2ef0-4f12-81f8-a94527685a19">
+
+3. Once logged in, you can create, edit, and delete notes as needed.
+   <img width="1440" alt="Screenshot 2024-02-11 at 2 04 03 PM" src="https://github.com/srikantdv0/MyNoteApp/assets/151364655/82e0a8ed-0c47-4fc1-9ec5-be54d428dbd0">
+   <img width="1440" alt="Screenshot 2024-02-11 at 2 05 01 PM" src="https://github.com/srikantdv0/MyNoteApp/assets/151364655/898ec170-cc29-45ef-ab07-54f5d4cfa5a0">
+   <img width="1440" alt="Screenshot 2024-02-11 at 2 06 06 PM" src="https://github.com/srikantdv0/MyNoteApp/assets/151364655/87fab18f-d910-43f0-a75c-c0a284fc88e7">
+   <img width="1440" alt="Screenshot 2024-02-11 at 2 10 45 PM" src="https://github.com/srikantdv0/MyNoteApp/assets/151364655/d35f8096-f274-40dc-b71e-64bea9db7d03">
+   <img width="1440" alt="Screenshot 2024-02-11 at 2 11 00 PM" src="https://github.com/srikantdv0/MyNoteApp/assets/151364655/53b35151-beed-4baf-804e-7b376b0f16ee">
+
+4. To read notes shared to you by someone, expand "Shared Notes", you can read, write (if is permission provided) and Unsubscribe 
+   <img width="1440" alt="Screenshot 2024-02-11 at 2 11 13 PM" src="https://github.com/srikantdv0/MyNoteApp/assets/151364655/6633e890-1241-426c-9a87-280c4501045e">
+
+5. Use the search feature to quickly find specific notes by title.
+   <img width="1440" alt="Screenshot 2024-02-11 at 2 14 17 PM" src="https://github.com/srikantdv0/MyNoteApp/assets/151364655/7884f987-9395-4479-bf1d-1f666dbbbe0a">
+
+6. Share notes to different users with Read/ReadWrite permissions.
+   <img width="1440" alt="Screenshot 2024-02-11 at 2 08 17 PM" src="https://github.com/srikantdv0/MyNoteApp/assets/151364655/7d1c3c25-8c56-47ad-b6f0-f072e61d5dd6">
+
+7. Checkout out your profile, add a profile pic
+   <img width="1440" alt="Screenshot 2024-02-11 at 2 11 37 PM" src="https://github.com/srikantdv0/MyNoteApp/assets/151364655/365152ee-14f7-4630-a951-6db88cd04fb4">
+   <img width="1440" alt="Screenshot 2024-02-11 at 2 12 00 PM" src="https://github.com/srikantdv0/MyNoteApp/assets/151364655/2da6e313-a7e4-4065-83d5-9dffb3afb0d7">
+
+8. Log out when you're done using the application to secure your account.
+   <img width="1440" alt="Screenshot 2024-02-11 at 2 12 36 PM" src="https://github.com/srikantdv0/MyNoteApp/assets/151364655/017fc4b9-bb7c-488e-a5b7-9241241469e4">
 
 ## Contributing
 
